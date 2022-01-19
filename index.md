@@ -1,2 +1,0 @@
-### Mohith Kumar Bezawada
-
