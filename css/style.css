@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+
+:root {
+    font-family: 'JetBrains Mono','Courier New', Courier, monospace;
+    font-size: 1rem;
+    scroll-behavior: smooth;
+    scroll-padding: 1.3rem;
+    --light-border: solid .5px #ffffff26;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 5px 0;
+}
+
+body {
+    background: #101410;
+    color: #ebfff2;
+}
+
+#article-banner {
+    width: calc(70ch + 200px);
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+#article-divider {
+    background: none;
+    border: none;
+    border-bottom: var(--light-border);
+}
+
+#banner-links>a {
+    color: #d0d0d0;
+    text-decoration: none;
+}
+
+#banner-links>a:hover {
+    text-decoration: underline;
+}
+
+#page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    gap: 5px;
+    padding: 5px;
+}
+
+#post-index {
+    width: 200px;
+    max-width: 200px;
+    position: sticky;
+    top: 0;
+    opacity: .7;
+    transition: opacity 400ms;
+    padding-top: 1.3rem;
+}
+
+#post-index:hover {
+    opacity: 1;
+}
+
+#post-index a {
+    color: inherit;
+}
+
+#post-index ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+#post-index:not(:has(ul li:nth-child(2))) {
+    display: none;
+}
+
+#post {
+    width: 70ch;
+    max-width: 98%;
+}
+
+#post h1:first-of-type {
+    color: #aeffa1;
+    font-size: 1.5rem;
+}
+
+#post>* {
+    margin: 1.3rem 0;
+}
+
+#post>pre {
+    background: #3a4a40;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#post>blockquote {
+    font-size: .8rem;
+    background: #303632;
+    border-left: solid 0.3rem #76954e;
+    margin-left: 1.5rem;
+    margin-right: inherit;
+    padding: 10px;
+    border-radius: 0 5px 5px 0;
+}
+
+#post>blockquote>p {
+    margin: 0;
+}
+
+#post>table{
+    border-collapse: collapse;
+}
+
+#post>table th{
+    background: #303632;
+}
+
+#post>table td,#post>table th{
+    border: var(--light-border);
+    padding: 5px;
+}
+
+@media (max-width: 800px) {
+    #article-banner {
+        padding: initial;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    #page {
+        flex-direction: column-reverse;
+    }
+
+    #post-index {
+        padding-top: 0;
+    }
+}

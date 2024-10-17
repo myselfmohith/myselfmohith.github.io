@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <title>myselfmohith</title>
+
+    <style>
+        #body-main {
+            width: 100vw;
+            min-height: 45vh;
+            display: flex;
+            justify-content: end;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.5rem;
+            padding-bottom: 10px;
+        }
+
+        #body-sections {
+            border: var(--light-border);
+            gap: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            padding-bottom: none;
+        }
+
+        #body-sections>span {
+            font-size: 16px;
+            padding: 5px 10px;
+            border: var(--light-border);
+            cursor: pointer;
+        }
+
+        #body-items {
+            padding: 5px;
+        }
+
+        #body-items>div {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            width: 100ch;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        #body-items>div>a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            width: 300px;
+            max-width: 90vw;
+            border: var(--light-border);
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        #body-items>div>a:hover {
+            background: #222;
+        }
+
+        #body-items>div>a>h3 {
+            font-size: 16px;
+        }
+
+        #body-items>div>a>span {
+            display: block;
+            font-size: 8px;
+            opacity: .5;
+        }
+
+        #body-items>div>a>p {
+            font-size: 14px;
+            opacity: .8;
+        }
+
+        @media (max-width: 800px) {
+            #body-main {
+                padding-left: 5px;
+                align-items: start;
+            }
+
+            #body-sections {
+                justify-content: start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="body-main">
+        <h1>Hello there!</h1>
+        <h3>This is Mohith Kumar (@myselfmohith)</h3>
+    </div>
+    <div id="body-sections">
+        <span style="background-color: #555;" onclick="activeCurrent(this)">Posts</span>
+        <span onclick="activeCurrent(this)">Utils</span>
+    </div>
+    <div id="body-items">
+        <div id="latest-posts">
+
+        </div>
+        <div style="display: none;" id="latest-utils">
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("/scripts/latest_data.json")
+                .then(response => {
+                    if (response.status != 200) {
+                        throw { "message": "Ops! Something is wrong." };
+                    }
+                    return response.json();
+                })
+                .then(response => {
+                    if (response["latest_posts"] && response["latest_utils"]) {
+                        function getPostcard(title, description, timeMs, filename) {
+                            return `<a href="/posts/${filename}.html" class="post-card">
+                            <h3>${title}</h3>
+                            <span>${new Date(timeMs).toLocaleString()}</span>
+                            <p>${description}</p>
+                            </a>`;
+                        }
+
+                        function getUtilCard(title, timeMs) {
+                            return `<a href="/utils/${title}" target="_blank" class="util-card">
+                            <h3>${title}</h3>
+                            <span>${new Date(timeMs).toLocaleString()}</span>
+                            </a>`;
+                        }
+                        // set data
+                        const latestPostsContainer = document.getElementById("latest-posts"),
+                            latestUtilsContainer = document.getElementById("latest-utils");
+                        for (const postData of response["latest_posts"]) {
+                            latestPostsContainer.innerHTML += getPostcard(postData["title"], postData["description"], postData["birth"], postData["filename"]);
+                        }
+                        for (const utilData of response["latest_utils"]) {
+                            latestUtilsContainer.innerHTML += getUtilCard(utilData[0], utilData[1]);
+                        }
+                    };
+                })
+                .catch(err => {
+                    // alert(err.message);
+                    console.error(err);
+                });
+        });
+
+        /**
+         * 
+         */
+        function activeCurrent(element) {
+            if (element.textContent === "Posts") {
+                element.nextElementSibling.style.backgroundColor = "unset";
+                document.getElementById("latest-utils").style.display = "none";
+                document.getElementById("latest-posts").style.display = "flex";
+            } else {
+                element.previousElementSibling.style.backgroundColor = "unset";
+                document.getElementById("latest-utils").style.display = "flex";
+                document.getElementById("latest-posts").style.display = "none";
+            }
+            element.style.backgroundColor = "#555";
+        }
+    </script>
+</body>
+
+</html>

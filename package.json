@@ -1,0 +1,20 @@
+{
+  "name": "myselfmohith.github.io",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "sh build/build.sh",
+    "watch": "nodemon -e js,html,md,css --ignore dst/ --exec npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "showdown": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

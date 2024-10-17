@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js" integrity="sha512-LhccdVNGe2QMEfI3x4DVV3ckMRe36TfydKss6mJpdHjNFiV07dFpS2xzeZedptKZrwxfICJpez09iNioiSZ3hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://icons.iconarchive.com/icons/martz90/hex/512/html-5-icon.png"
+        type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Html Viewer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            display: grid;
+            grid-template-areas: "options options"
+                "input output";
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #options {
+            grid-area: options;
+            width: 100%;
+            color: #eee;
+            background: #2c2c2c;
+            padding: 5px 10px;
+            height: 40px;
+            accent-color: rgb(255, 85, 0);
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #run-html {
+            background: rgb(255, 85, 0);
+            border-radius: 5px;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        #options a{
+            color: inherit;
+            text-decoration: none;
+        }
+
+        body>textarea,
+        body>iframe {
+            width: 100%;
+            display: block;
+            resize: none;
+            margin: 0;
+            padding: 0;
+            height: calc(100vh - 40px);
+            border: none;
+        }
+
+        #html-input {
+            overflow-y: auto;
+            font-size: 16px;
+            color: rgba(0, 0, 0, .8);
+            grid-area: input;
+            padding: 10px;
+            outline: none;
+            line-height: 1.6;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #html-input::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #html-input::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #html-input::-webkit-scrollbar-thumb {
+            background: #9b9b9b;
+            border-radius: 5px;
+        }
+
+        #html-output {
+            grid-area: output;
+            background: #f3f3f3;
+        }
+
+        input[type=range] {
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="options">
+        <label>SandBoxed<a target="_blank" title="Refer docs"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#sandbox">(i)</a> :
+            <input type="range" id="sandbox-slider" step="1" min="1" value="2" max="2">
+        </label>
+        <label>MarkDown :
+            <input type="range" id="markdown-slider" step="1" min="1" value="1" max="2">
+        </label>
+        <button id="run-html" title="(Ctrl + Enter)">Run</button>
+    </div>
+    <textarea placeholder="Start with html" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+        id="html-input"></textarea>
+    <iframe allowfullscreen="false" credentialless="true" sandbox="" id="html-output"></iframe>
+    <script>
+        const markDownStyle = `<style>
+            body{
+                font-family: serif;
+            }
+            </style>
+        `;
+        let markDownConvertor = undefined;
+        const iFrame = document.getElementById("html-output");
+        const htmlInputElement = document.getElementById("html-input");
+        const sandBoxToggleElement = document.getElementById("sandbox-slider");
+        const markDownToggleElement = document.getElementById("markdown-slider");
+
+        let isSandBoxed = sandBoxToggleElement.value == "2";
+        let isMarkDown = markDownToggleElement.value == "2";
+
+        function setHtml(text) {
+            if (isSandBoxed) {
+                iFrame.setAttribute("sandbox", "");
+            } else {
+                iFrame.removeAttribute("sandbox");
+            }
+
+            localStorage.setItem("html-input", text);
+            if (isMarkDown) {
+                text = markDownConvertor.makeHtml(text); // todo: convert
+                text = markDownStyle + "\n" + text;
+            }
+            iFrame.srcdoc = text;
+        }
+
+        sandBoxToggleElement.addEventListener("input", function () {
+            isSandBoxed = sandBoxToggleElement.value == "2";
+            localStorage.setItem("is-sandboxed", isSandBoxed);
+        })
+
+        markDownToggleElement.addEventListener("input", function () {
+            isMarkDown = markDownToggleElement.value == "2";
+            localStorage.setItem("is-markdown", isMarkDown);
+        })
+
+        document.getElementById("run-html").addEventListener("click", function () {
+            setHtml(htmlInputElement.value);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            markDownConvertor = new showdown.Converter();
+
+            let boolVal = localStorage.getItem("is-sandboxed");
+            if (boolVal) {
+                isSandBoxed = boolVal == "true";
+                sandBoxToggleElement.value = isSandBoxed ? 2 : 1;
+            }
+            boolVal = localStorage.getItem("is-markdown");
+            if (boolVal) {
+                isMarkDown = boolVal == "true";
+                markDownToggleElement.value = isMarkDown ? 2 : 1;
+            }
+            const htmlText = localStorage.getItem("html-input");
+            if (htmlText) {
+                htmlInputElement.value = htmlText;
+            }
+        })
+
+        document.addEventListener("keydown", function (event) {
+            if (event.ctrlKey && [13, 83, 86].includes(event.keyCode)) {
+                setTimeout(() => setHtml(htmlInputElement.value), 100);
+                if (event.keyCode == 83) {
+                    event.preventDefault(); // ctrl + s
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
