@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
       - name: Clone
-        uses: actions/checkout@v4
+        run: git clone https://github.com/myselfmohith/myselfmohith.github.io.git; cd myselfmohith.github.io
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Install NPM
