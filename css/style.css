@@ -141,5 +141,6 @@ body {
 
     #post-index {
         padding-top: 0;
+        position: relative;
     }
 }
