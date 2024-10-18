@@ -20,18 +20,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Setup Node
-        uses: actions/setup-node@v4
-      - name: Clone
-        run: git clone https://github.com/myselfmohith/myselfmohith.github.io.git .
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Install NPM
-        run: npm install
-      - name: Build
-        run: npm run build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: git clone https://github.com/myselfmohith/myselfmohith.github.io.git .
+      - uses: actions/configure-pages@v5
+      - run: npm install
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: 'dst'
       - name: Deploy to GitHub Pages
