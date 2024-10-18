@@ -1,7 +1,8 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const cheerio = require("cheerio");
-const showdown = require("showdown");
+import * as fs from "node:fs";
+import path from "node:path";
+import * as cheerio from "cheerio";
+import showdown from "showdown";
+import gitlog from "gitlog";
 
 const CONSTANTS = {
     HTML_TEMPLATE: fs.readFileSync("build/template.html", { encoding: "utf-8" }),
@@ -40,6 +41,7 @@ const FUNCTIONS = {
         converter.setOption("ghCompatibleHeaderId", true);
         converter.setOption("customizedHeaderId", true);
 
+
         const htmlString = converter.makeHtml(markDownText);
         const $src = cheerio.load(htmlString);
 
@@ -75,17 +77,32 @@ const FUNCTIONS = {
         $new("section#page>article#post").html($src.html());
 
         return { "filename": FUNCTIONS.slugify(FUNCTIONS.trimText(postTitle), 100), "html": $new.html(), "title": postTitle, "description": postDescription.text() };
+    },
+    fileStatsTime: async function (filename) {
+        try {
+            const resp = await gitlog({
+                repo: ".",
+                file: filename,
+                fields: ["authorDate"],
+                number: 1
+            });
+
+            return new Date(resp[0]["authorDate"]).getTime();
+        } catch (error) {
+            console.error(error);
+            return 0;
+        }
     }
 }
 
 for (const file of fs.readdirSync("posts")) {
     if (file.endsWith(".md")) {
         try {
-            const stats = fs.statSync(path.join("posts", file));
+            const birthTime = await FUNCTIONS.fileStatsTime(path.join("posts", file));
             const md = fs.readFileSync(path.join("posts", file), { encoding: "utf-8" });
             const object = FUNCTIONS.parseToHtml(md);
             fs.writeFileSync(path.join(CONSTANTS.POSTS_DIR, object["filename"] + ".html"), object["html"], { encoding: "utf-8" });
-            posts[object["filename"]] = { birth: stats["birthtimeMs"], ...object, html: undefined };
+            posts[object["filename"]] = { birth: birthTime, ...object, html: undefined };
             console.log("SUCCESS: " + file + " -> " + object["filename"] + ".html");
         } catch (error) {
             console.log("ERROR:" + file + " -> " + error.message);
@@ -98,8 +115,8 @@ for (const file of fs.readdirSync("posts")) {
 for (const file of fs.readdirSync("utils")) {
     if (file.endsWith(".html")) {
         try {
-            const stats = fs.statSync(path.join("utils", file));
-            utils[file] = stats["birthtimeMs"];
+            const birthTime = await FUNCTIONS.fileStatsTime(path.join("utils", file));
+            utils[file] = birthTime;
         } catch (error) {
             console.log("ERROR:" + file + " -> " + error.message);
             console.log(error);

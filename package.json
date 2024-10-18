@@ -2,6 +2,7 @@
   "name": "myselfmohith.github.io",
   "version": "1.0.0",
   "main": "build/index.js",
+  "type": "module",
   "scripts": {
     "build": "sh build/build.sh",
     "watch": "nodemon -e js,html,md,css --ignore dst/ --exec npm run build"
@@ -12,6 +13,7 @@
   "description": "",
   "dependencies": {
     "cheerio": "^1.0.0",
+    "gitlog": "^5.1.0",
     "showdown": "^2.1.0"
   },
   "devDependencies": {
