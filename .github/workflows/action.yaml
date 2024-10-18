@@ -16,14 +16,11 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: git clone https://github.com/myselfmohith/myselfmohith.github.io.git .
+      - uses: actions/checkout@v5
       - uses: actions/configure-pages@v5
       - run: npm install
       - run: npm run build
