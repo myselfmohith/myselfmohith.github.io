@@ -25,8 +25,10 @@ echo "[6] Posts Conversion Completed";
 
 echo;
 cp -v index.html dst/
+cp -v posts.html dst/
+cp -v utils.html dst/
 cp -v assets/icons/favicon.ico dst/
-echo "[7] Copied index.html";
+echo "[7] Copied Root Page Items";
 
 echo;
 echo "SUCCESS\nTotal Time: $( expr "$(date +%s)" - $start_time )s";

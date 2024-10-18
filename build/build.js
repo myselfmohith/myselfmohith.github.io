@@ -7,7 +7,8 @@ import gitlog from "gitlog";
 const CONSTANTS = {
     HTML_TEMPLATE: fs.readFileSync("build/template.html", { encoding: "utf-8" }),
     LATEST_POSTS_JSON: "dst/scripts/latest_data.json",
-    POSTS_JSON: "dst/scripts/data.json",
+    POSTS_JSON: "dst/scripts/data-posts.json",
+    UTILS_JSON: "dst/scripts/data-utils.json",
     POSTS_DIR: "dst/posts"
 }
 
@@ -128,4 +129,5 @@ const latest_posts = Object.entries(posts).sort((a, b) => b[1]["birth"] - a[1]["
 const latest_utils = Object.entries(utils).sort((a, b) => b[1] - a[1]).slice(0, 5);
 
 fs.writeFileSync(CONSTANTS.LATEST_POSTS_JSON, JSON.stringify({ latest_posts, latest_utils }), { encoding: "utf-8" });
-fs.writeFileSync(CONSTANTS.POSTS_JSON, JSON.stringify({ posts, utils }), { encoding: "utf-8" });
+fs.writeFileSync(CONSTANTS.POSTS_JSON, JSON.stringify(posts), { encoding: "utf-8" });
+fs.writeFileSync(CONSTANTS.UTILS_JSON, JSON.stringify(utils), { encoding: "utf-8" });
