@@ -10,6 +10,8 @@
 
     --index-width: 200px;
     --article-width: 70ch;
+    --page-gap: 10px;
+    --page-width: calc(var(--index-width) + var(--article-width) + var(--page-gap));
 }
 
 * {
@@ -23,7 +25,7 @@ body {
 }
 
 #article-banner {
-    width: calc(var(--index-width) + var(--article-width));
+    width: var(--page-width);
     max-width: 100%;
     display: flex;
     justify-content: space-between;
@@ -145,7 +147,7 @@ a.full-items:hover {
 
 /* utils.html & posts.html = start */
 #main-container {
-    width: calc(var(--index-width) + var(--article-width));
+    width: var(--page-width);
     max-width: 100%;
     margin: 1.5rem auto auto;
     padding: 5px 0;
@@ -158,7 +160,7 @@ a.full-items:hover {
     justify-content: center;
     align-items: flex-start;
     position: relative;
-    gap: 5px;
+    gap: var(--page-gap);
     padding: 5px;
 }
 
@@ -186,7 +188,7 @@ a.full-items:hover {
 }
 
 #post-index:not(:has(ul li:nth-child(2))) {
-    display: none;
+    visibility: hidden;
 }
 
 #post {
