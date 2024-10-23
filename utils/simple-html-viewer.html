@@ -155,7 +155,12 @@
         });
 
         document.addEventListener("DOMContentLoaded", function () {
-            markDownConvertor = new showdown.Converter();
+            markDownConvertor = new showdown.Converter({
+                "tables": true,
+                "simplifiedAutoLink": true,
+                "strikethrough": true,
+                "tasklists": true
+            });
 
             let boolVal = localStorage.getItem("is-sandboxed");
             if (boolVal) {
