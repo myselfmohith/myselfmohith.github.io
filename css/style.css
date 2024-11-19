@@ -169,26 +169,38 @@ a.full-items:hover {
     max-width: var(--index-width);
     position: sticky;
     top: 0;
-    opacity: .7;
+    filter: brightness(0.7);
     transition: opacity 400ms;
     padding-top: 1.3rem;
 }
 
-#post-index:hover {
-    opacity: 1;
-}
 
 #post-index a {
     color: inherit;
+    text-decoration: none;
+    display: block;
+    margin: 0;
 }
 
 #post-index ul {
     padding-left: 0;
     list-style: none;
+    font-size: 14px;
 }
 
 #post-index:not(:has(ul li:nth-child(2))) {
     visibility: hidden;
+}
+
+#post-index li{
+    padding-left: 1rem;
+    border-left: solid 1px;
+    margin: 0;
+    padding: 5px 0 5px 10px;
+}
+
+#post-index li:hover{
+    background: #ffffff15;
 }
 
 #post {
