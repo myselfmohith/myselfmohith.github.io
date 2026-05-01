@@ -90,6 +90,11 @@
                 --text-shade1: #222;
                 --text-shade2: #444;
                 --bottom-border: #b9b9b9;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            body{
+                width: 100%;
             }
         }
     </style>
@@ -111,9 +116,9 @@
 
     <section id="summary">
         <h3>Professional Summary</h3>
-        <p>Backend Engineer with 3+ years of experience building distributed systems, large-scale data pipelines, and
-            performance-critical backend services at Zoho and Netmeds. Strong expertise in system design, database
-            optimization, and scalable API development handling high-volume workloads.</p>
+        <p>Backend Engineer with 3+ years of experience building scalable backend systems and data pipelines. Strong in
+            system design, API development, and database performance optimization. Curious problem-solver with a fresh
+            perspective, highly adaptable, and open to learning and taking on new challenges</p>
     </section>
 
     <section id="work-experiances">
@@ -126,12 +131,12 @@
                 <p> Chennai, IN</p>
             </span>
             <ul>
-                <li> Built and operated distributed systems to crawl and process ~200M domains, powering large-scale
+                <li>Contributed to distributed systems for crawling and processing ~200M domains, supporting large-scale
                     data extraction pipelines with high reliability and fault-tolerant execution.</li>
                 <li>Designed stateless synchronous and asynchronous APIs in Java to support distributed ingestion and
                     processing of large-scale crawling workloads.</li>
-                <li>Owned the Techstack (technographics) platform, expanding coverage and improving extraction accuracy
-                    by integrating new data sources (including job portals) and refining core parsing logic.</li>
+                <li>Worked on the technographics platform, improving data coverage and extraction accuracy by
+                    integrating new data sources (including job portals) and enhancing parsing logic.</li>
                 <li>Reduced parked-domain false positives from 36% → 8% by integrating an ML-based classifier and
                     deploying inference in production Java services.</li>
                 <li>Improved PostgreSQL performance by ~30% through query profiling, execution plan analysis, and
@@ -147,8 +152,8 @@
                 <p>Chennai, IN</p>
             </span>
             <ul>
-                <li>Built item-user recommendation systems using Graph Neural Networks and collaborative filtering
-                    techniques inspired by Amazon-scale recommenders.</li>
+                <li>Built item-user recommendation systems using Graph Neural Networks and collaborative filtering,
+                    inspired by Amazon's item-to-item collaborative filtering approach.</li>
                 <li>Improved product categorization and metadata quality through automated web scraping and data
                     cleaning, enhancing recommendation accuracy.</li>
                 <li>Collaborated with data engineers and product teams to validate model outputs and integrate insights
@@ -163,8 +168,8 @@
         <div class="project-item">
             <h4>Distributed Job Orchestrator</h4>
             <ul>
-                <li>Built a distributed task orchestration system handling 50,000+ jobs with at-least-once delivery
-                    guarantees.</li>
+                <li>Built a distributed task orchestration system handling high-throughput workloads (peaking at ~1000
+                    QPS) with at-least-once delivery guarantees.</li>
                 <li>Implemented concurrent worker coordination using PostgreSQL SKIP LOCKED, enabling safe multi-worker
                     execution without contention.</li>
                 <li>Designed Redis-based heartbeat mechanism for worker health tracking and automatic recovery of failed
@@ -174,13 +179,16 @@
             </ul>
         </div>
         <div class="project-item">
-            <h4>RollCall Rooms</h4>
+            <h4>RollCall Rooms (Real-time Attendance System)</h4>
             <ul>
-                <li>Built a real-time classroom attendance system using MERN stack.</li>
-                <li>Implemented WebSocket-based communication using Socket.io for live updates.</li>
-                <li>Designed QR-based check-in system to eliminate duplicate entries and reduce manual tracking
-                    overhead.</li>
-                <li>Integrated Google OAuth 2.0 for secure authentication and role-based access control.</li>
+                <li> Built a real-time classroom attendance system using the MERN stack, enabling live attendance
+                    tracking for classroom sessions.</li>
+                <li> Implemented WebSocket-based real-time communication using Socket.io for instant attendance updates
+                    across clients.</li>
+                <li>Designed a QR-based check-in mechanism to prevent duplicate entries and ensure single-time
+                    attendance marking per session.</li>
+                <li>Integrated Google OAuth 2.0 for secure authentication and role-based access control for students and
+                    instructors.</li>
 
             </ul>
         </div>
@@ -197,20 +205,10 @@
 
     <section id="skills">
         <h3>Skills</h3>
-        <p>
-            <span>Java</span>
-            <span>JavaScript</span>
-            <span>Python</span>
-            <span>SQL</span>
-            <span>PostgreSQL</span>
-            <span>MongoDB</span>
-            <span>Redis</span>
-            <span>Spring Boot</span>
-            <span>Node.js</span>
-            <span>Java Servlet</span>
-            <span>Git</span>
-            <span>Linux</span>
-        </p>
+        <p><b>Languages:</b> Java, Python, JavaScript, SQL</p>
+        <p><b>Backend:</b> Spring Boot, Node.js, REST APIs</p>
+        <p><b>Databases:</b> PostgreSQL, MongoDB, Redis</p>
+        <p><b>Tools:</b> Git, Linux</p>
     </section>
 </body>
 
