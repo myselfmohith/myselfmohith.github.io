@@ -93,7 +93,7 @@
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             }
 
-            body{
+            body {
                 width: 100%;
             }
         }
@@ -116,9 +116,10 @@
 
     <section id="summary">
         <h3>Professional Summary</h3>
-        <p>Backend Engineer with 3+ years of experience building scalable backend systems and data pipelines. Strong in
-            system design, API development, and database performance optimization. Curious problem-solver with a fresh
-            perspective, highly adaptable, and open to learning and taking on new challenges</p>
+        <p>Backend Engineer with 3+ years of experience designing distributed systems, high-throughput APIs, and data
+            pipelines. Comfortable working across the full backend lifecycle, from system design and query optimisation
+            to production debugging and reliability. Drawn to problems that involve scale, concurrency, and data
+            quality. Seeking a product-company role with greater ownership and engineering depth.</p>
     </section>
 
     <section id="work-experiances">
@@ -131,17 +132,22 @@
                 <p> Chennai, IN</p>
             </span>
             <ul>
-                <li>Contributed to distributed systems for crawling and processing ~200M domains, supporting large-scale
-                    data extraction pipelines with high reliability and fault-tolerant execution.</li>
-                <li>Designed stateless synchronous and asynchronous APIs in Java to support distributed ingestion and
-                    processing of large-scale crawling workloads.</li>
-                <li>Worked on the technographics platform, improving data coverage and extraction accuracy by
-                    integrating new data sources (including job portals) and enhancing parsing logic.</li>
-                <li>Reduced parked-domain false positives from 36% → 8% by integrating an ML-based classifier and
-                    deploying inference in production Java services.</li>
-                <li>Improved PostgreSQL performance by ~30% through query profiling, execution plan analysis, and
-                    targeted indexing on high-frequency access paths.</li>
-
+                <li>Contributed to distributed
+                    crawling infrastructure that processes and indexes ~200M domains, supporting large-scale data
+                    extraction with fault-tolerant, at-least-once execution guarantees.</li>
+                <li>Designed stateless synchronous
+                    and asynchronous Java APIs for distributed ingestion, decoupling producers from consumers to enable
+                    independent scaling of crawling workloads.</li>
+                <li>Reduced parked-domain
+                    false-positive rate from 36% to 8% (a 28 pp reduction) by integrating an ML-based classifier into
+                    production Java services — directly improving data quality downstream.</li>
+                <li>Improved PostgreSQL query
+                    performance by ~30% through systematic profiling, execution plan analysis
+                    (<code>EXPLAIN ANALYZE</code>),
+                    and targeted composite indexing on high-frequency access paths.</li>
+                <li>Extended the technographics
+                    platform by integrating job-portal data sources and improving HTML parsing logic, increasing
+                    coverage and extraction accuracy of technology-usage signals.</li>
             </ul>
         </div>
         <div class="work-item">
@@ -168,14 +174,18 @@
         <div class="project-item">
             <h4>Distributed Job Orchestrator</h4>
             <ul>
-                <li>Built a distributed task orchestration system handling high-throughput workloads (peaking at ~1000
-                    QPS) with at-least-once delivery guarantees.</li>
-                <li>Implemented concurrent worker coordination using PostgreSQL SKIP LOCKED, enabling safe multi-worker
-                    execution without contention.</li>
-                <li>Designed Redis-based heartbeat mechanism for worker health tracking and automatic recovery of failed
-                    or abandoned jobs.</li>
-                <li>Optimized throughput using composite indexing on job state and timestamps for efficient high-volume
-                    task scheduling.</li>
+                <li>Built a distributed task
+                    orchestration system capable of handling ~1,000 QPS peak throughput with at-least-once delivery
+                    semantics.</li>
+                <li>Used PostgreSQL <code>SKIP LOCKED</code>
+                    for concurrent worker coordination, enabling safe multi-worker job claiming without row-level
+                    contention.</li>
+                <li>Implemented a Redis-based
+                    heartbeat mechanism to track worker liveness and automatically recover stalled or abandoned jobs.
+                </li>
+                <li>Optimized scheduling throughput
+                    with composite indexes on job state and scheduled timestamp columns, reducing scan cost on
+                    high-volume job queues.</li>
             </ul>
         </div>
         <div class="project-item">
@@ -206,9 +216,10 @@
     <section id="skills">
         <h3>Skills</h3>
         <p><b>Languages:</b> Java, Python, JavaScript, SQL</p>
-        <p><b>Backend:</b> Spring Boot, Node.js, REST APIs</p>
-        <p><b>Databases:</b> PostgreSQL, MongoDB, Redis</p>
-        <p><b>Tools:</b> Git, Linux</p>
+        <p><b>Backend:</b> Spring Boot, Node.js, REST APIs (sync & async), distributed systems</p>
+        <p><b>Databases:</b> PostgreSQL (query optimisation, indexing), MongoDB, Redis</p>
+        <p><b>Tools:</b> Git, Linux, Socket.io, WebSockets</p>
+        <p><b>Concepts:</b> System design, concurrent processing, data pipelines, ML integration</p>
     </section>
 </body>
 
