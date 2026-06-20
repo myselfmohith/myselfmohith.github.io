@@ -32,6 +32,7 @@ function fetchJson(url) {
 }
 
 function homePage() {
+    return;
     fetchJson("/scripts/latest_data.json")
         .then(response => {
             if (response["latest_posts"] && response["latest_utils"]) {
