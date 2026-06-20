@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohith Kumar - Backend Engineer</title>
+    <link rel="icon" type="image/x-icon" href="/assets/me-ascii-art.png" />
     <link rel="stylesheet" href="/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
-    <title>Mohith Kumar (@myselfmohith)</title>
     <script src="/scripts/index.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", homePage);
@@ -14,22 +14,90 @@
 </head>
 
 <body>
-    <div id="body-main">
-        <h1>Hello there!</h1>
-        <h3>This is Mohith Kumar (@myselfmohith)</h3>
-    </div>
-    <div id="body-sections">
-        <span style="background-color: #555;" onclick="activeCurrent(this)">Posts</span>
-        <span onclick="activeCurrent(this)">Utils</span>
-    </div>
-    <div id="body-items">
-        <div id="latest-posts" class="item-cards-container">
 
+    <nav>
+        <span>
+            <img id="me-ascii" src="/assets/me-ascii-art.png" />
+            myselfmohith
+        </span>
+        <div class="links">
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+            <!-- <a href="/posts.html">Posts</a>
+            <a href="/utils.html">Utils</a> -->
         </div>
-        <div style="display: none;" id="latest-utils" class="item-cards-container">
+    </nav>
 
+    <section id="hero">
+        <div class="tag">// backend engineer · distributed systems · java</div>
+        <h1>Mohith Kumar Bezawada</h1>
+        <p class="desc">I build backend systems that scale — distributed crawlers, high-throughput APIs, and data
+            pipelines. Currently at Zoho, working on infrastructure that processes ~200M domains.</p>
+        <div class="btns">
+            <a href="mailto:bezawdamohith14@gmail.com" class="btn btn-green">Get in touch</a>
+            <a href="/resume" class="btn">Resume ↗</a>
+            <a href="https://github.com/myselfmohith" target="_blank" class="btn">GitHub ↗</a>
+            <a href="https://linkedin.com/in/myselfmohith" target="_blank" class="btn">LinkedIn ↗</a>
         </div>
-    </div>
+    </section>
+
+    <section id="posts">
+        <h2>Posts</h2>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="item-card">
+            <div class="item-card-name">Distributed Job Orchestrator</div>
+            <div class="item-card-desc">Task orchestration system handling ~1,000 QPS with at-least-once delivery. Uses
+                PostgreSQL SKIP LOCKED for contention-free worker claiming and Redis heartbeats for liveness +
+                auto-recovery.</div>
+            <div class="tags">
+                <span class="tag-pill">Java</span>
+                <span class="tag-pill">PostgreSQL</span>
+                <span class="tag-pill">Redis</span>
+                <span class="tag-pill">Distributed Systems</span>
+            </div>
+        </div>
+        <div class="item-card">
+            <div class="item-card-name">RollCall Rooms — Real-Time Attendance</div>
+            <div class="item-card-desc">Classroom attendance system with live WebSocket updates, QR check-in with
+                server-side deduplication, and Google OAuth 2.0 with role-based access control.</div>
+            <div class="tags">
+                <span class="tag-pill">React</span>
+                <span class="tag-pill">Node.js</span>
+                <span class="tag-pill">MongoDB</span>
+                <span class="tag-pill">Socket.io</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill-row"><span class="skill-key">Languages</span><span class="skill-val">Java, Python, JavaScript,
+                SQL</span></div>
+        <div class="skill-row"><span class="skill-key">Backend</span><span class="skill-val">Spring Boot, Node.js, REST
+                APIs</span></div>
+        <div class="skill-row"><span class="skill-key">Databases</span><span class="skill-val">PostgreSQL, MongoDB,
+                Redis</span></div>
+        <div class="skill-row"><span class="skill-key">Tools</span><span class="skill-val">Git, Linux, Socket.io</span>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Open to backend engineering roles. Interested in distributed systems and product-engineering environments.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:bezawdamohith14@gmail.com" class="btn btn-green">✉ Email me</a>
+            <a href="https://linkedin.com/in/myselfmohith" target="_blank" class="btn">LinkedIn ↗</a>
+            <a href="https://github.com/myselfmohith" target="_blank" class="btn">GitHub ↗</a>
+        </div>
+    </section>
+
+    <footer>© 2026 Mohith Kumar Bezawada</footer>
+
 </body>
 
 </html>

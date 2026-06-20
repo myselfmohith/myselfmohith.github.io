@@ -1,32 +1,21 @@
-/**
- * Switch between posts and utils on click
- */
-function activeCurrent(element) {
-    if (element.textContent === "Posts") {
-        element.nextElementSibling.style.backgroundColor = "unset";
-        document.getElementById("latest-utils").style.display = "none";
-        document.getElementById("latest-posts").style.display = "inherit";
-    } else {
-        element.previousElementSibling.style.backgroundColor = "unset";
-        document.getElementById("latest-utils").style.display = "inherit";
-        document.getElementById("latest-posts").style.display = "none";
-    }
-    element.style.backgroundColor = "#555";
-}
-
 function getPostcard(title, description, timeMs, filename) {
     return `<a href="/posts/${filename}.html" class="item-card">
-                <h3>${title}</h3>
-                <span>${new Date(timeMs).toLocaleString()}</span>
-                <p>${description}</p>
+                <div class="item-card-name">${title}</div>
+                <div class="item-card-desc">${description}</div>
+                <div class="tags">
+                    <div class="tag-pill">${new Date(timeMs).toLocaleString()}</div>
+                </div>        
             </a>`;
 }
 
 function getUtilCard(title, timeMs) {
     return `<a href="/utils/${title}" target="_blank" class="item-card">
-                <h3>${title}</h3>
-                <span>${new Date(timeMs).toLocaleString()}</span>
-            </a>`;
+                <div class="item-card-name">${title}</div>
+                <div class="tags">
+                    <div class="tag-pill">${new Date(timeMs).toLocaleString()}</div>
+                </div>        
+            </a>
+            `;
 }
 
 function fetchJson(url) {
@@ -47,21 +36,10 @@ function homePage() {
         .then(response => {
             if (response["latest_posts"] && response["latest_utils"]) {
                 // set data
-                const latestPostsContainer = document.getElementById("latest-posts"),
-                    latestUtilsContainer = document.getElementById("latest-utils");
+                const postsSection = document.getElementById("posts");
                 for (const postData of response["latest_posts"]) {
-                    latestPostsContainer.innerHTML += getPostcard(postData["title"], postData["description"], postData["birth"], postData["filename"]);
+                    postsSection.innerHTML += getPostcard(postData["title"], postData["description"], postData["birth"], postData["filename"]);
                 }
-                latestPostsContainer.innerHTML += `
-                <a class="full-items" align="center" href="/posts.html">All Posts</a>
-                `
-
-                for (const utilData of response["latest_utils"]) {
-                    latestUtilsContainer.innerHTML += getUtilCard(utilData[0], utilData[1]);
-                }
-                latestUtilsContainer.innerHTML += `
-                <a class="full-items" href="/utils.html">All Utils</a>
-                `
             };
         })
 }
