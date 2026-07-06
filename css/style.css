@@ -188,22 +188,10 @@ a.item-card:hover{
     border-radius: 3px;
 }
 
-.skill-row {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 0.6rem;
-    align-items: baseline;
-}
-
-.skill-key {
+#skills b {
     color: #6a8f70;
     min-width: 80px;
     font-size: 0.78rem;
-}
-
-.skill-val {
-    color: #ebfff2;
-    font-size: 0.85rem;
 }
 
 #contact {

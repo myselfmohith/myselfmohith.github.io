@@ -1,0 +1,202 @@
+diff --git a/css/style.css b/css/style.css
+index 200be79..d2a632a 100644
+--- a/css/style.css
++++ b/css/style.css
+@@ -188,24 +188,12 @@ a.item-card:hover{
+     border-radius: 3px;
+ }
+ 
+-.skill-row {
+-    display: flex;
+-    gap: 1rem;
+-    margin-bottom: 0.6rem;
+-    align-items: baseline;
+-}
+-
+-.skill-key {
++#skills b {
+     color: #6a8f70;
+     min-width: 80px;
+     font-size: 0.78rem;
+ }
+ 
+-.skill-val {
+-    color: #ebfff2;
+-    font-size: 0.85rem;
+-}
+-
+ #contact {
+     text-align: center;
+ }
+diff --git a/index.html b/index.html
+index beca45f..40e4248 100644
+--- a/index.html
++++ b/index.html
+@@ -75,14 +75,9 @@
+ 
+     <section id="skills">
+         <h2>Skills</h2>
+-        <div class="skill-row"><span class="skill-key">Languages</span><span class="skill-val">Java, Python, JavaScript,
+-                SQL</span></div>
+-        <div class="skill-row"><span class="skill-key">Backend</span><span class="skill-val">Spring Boot, Node.js, REST
+-                APIs</span></div>
+-        <div class="skill-row"><span class="skill-key">Databases</span><span class="skill-val">PostgreSQL, MongoDB,
+-                Redis</span></div>
+-        <div class="skill-row"><span class="skill-key">Tools</span><span class="skill-val">Git, Linux, Socket.io</span>
+-        </div>
++        <p><b>Languages/Frameworks</b>: Java, Python, JavaScript, NodeJS, Spring Boot, ExpressJS, React</p>
++        <p><b>Database/Cloud</b>: Postgres, MongoDB, Redis, Kafka</p>
++        <p><b>Others</b>: Docker, Socket.io, Microservices, System Monitoring</p>
+     </section>
+ 
+     <section id="contact">
+diff --git a/routes/resume.html b/routes/resume.html
+index 54aa704..8ef7b95 100644
+--- a/routes/resume.html
++++ b/routes/resume.html
+@@ -42,10 +42,12 @@
+             border-bottom: solid .5px var(--bottom-border);
+             padding-bottom: 2.5px;
+             margin-bottom: 5px;
++            font-size: 17px;
+         }
+ 
+         h4 {
+             margin-top: 5px;
++            font-size: 15px;
+         }
+ 
+         ul {
+@@ -90,7 +92,7 @@
+                 --text-shade1: #222;
+                 --text-shade2: #444;
+                 --bottom-border: #b9b9b9;
+-                font-family:  'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
++                font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+             }
+ 
+             body {
+@@ -103,6 +105,7 @@
+ <body>
+     <section id="info">
+         <h1>MOHITH KUMAR BEZAWADA</h1>
++        <p>Ongole, Andhra Pradesh, India.</p>
+         <p>
+             <a href="mailto:bezawdamohith14@gmail.com">
+                 bezawdamohith14@gmail.com
+@@ -111,51 +114,52 @@
+             <a href="https://in.linkedin.com/in/myselfmohith">LinkedIn</a>
+             <a href="https://github.com/myselfmohith">Github</a>
+         </p>
+-        <p>Ongole, Andhra Pradesh, India.</p>
+     </section>
+ 
+-    <section id="summary">
++    <!-- <section id="summary">
+         <h3>Professional Summary</h3>
+         <p>Backend Engineer with 3+ years of experience designing distributed systems, high-throughput APIs, and data
+             pipelines. Comfortable working across the full backend lifecycle, from system design and query optimisation
+             to production debugging and reliability. Drawn to problems that involve scale, concurrency, and data
+             quality. Seeking a product-company role with greater ownership and engineering depth.</p>
++    </section> -->
++
++    <section id="skills-resume">
++        <h3>Skills</h3>
++        <p><b>Languages/Frameworks</b>: Java, Python, JavaScript, NodeJS, Spring Boot, ExpressJS, React</p>
++        <p><b>Database/Cloud</b>: Postgres, MongoDB, Redis, Kafka</p>
++        <p><b>Others</b>: Docker, Socket.io, Microservices, System Monitoring</p>
+     </section>
+ 
+     <section id="work-experiances">
+         <h3>Work Experience</h3>
+         <div class="work-item">
+             <h4>Zoho</h4>
+-            <p>Member Technical Staff</p>
+             <span class="flex-space-between">
++                <p>Member Technical Staff | Chennai, IN</p>
+                 <p>Jun 2023 - Present </p>
+-                <p> Chennai, IN</p>
+             </span>
+             <ul>
+-                <li>Contributed to distributed
+-                    crawling infrastructure that processes and indexes ~200M domains, supporting large-scale data
+-                    extraction with fault-tolerant, at-least-once execution guarantees.</li>
+-                <li>Designed stateless synchronous
+-                    and asynchronous Java APIs for distributed ingestion, decoupling producers from consumers to enable
+-                    independent scaling of crawling workloads.</li>
+-                <li>Reduced parked-domain
+-                    false-positive rate from 36% to 8% (a 28 pp reduction) by integrating an ML-based classifier into
+-                    production Java services directly improving data quality downstream.</li>
+-                <li>Improved PostgreSQL query
+-                    performance by ~30% through systematic profiling, execution plan analysis
+-                    (<code>EXPLAIN ANALYZE</code>),
+-                    and targeted composite indexing on high-frequency access paths.</li>
+-                <li>Extended the technographics
+-                    platform by integrating job-portal data sources and improving HTML parsing logic, increasing
+-                    coverage and extraction accuracy of technology-usage signals.</li>
++                <li>Contributed to a distributed crawling infrastructure processing ~200M domains, providing
++                    fault-tolerant, at-least-once execution for large-scale web data extraction.</li>
++                <li>Designed stateless synchronous and asynchronous Java APIs for distributed ingestion pipelines,
++                    enabling independent horizontal scaling.</li>
++                <li>Built a reusable Redis-backed distributed rate-limiting framework for 10 external service
++                    integrations, enforcing global request quotas across multiple application instances.</li>
++                <li>Reduced parked-domain false positives from 36% to 8% by integrating an ML-based classifier into
++                    production services, improving downstream data quality.</li>
++                <li>Improved PostgreSQL query performance by ~30% through execution-plan analysis (EXPLAIN ANALYZE) and
++                    targeted composite indexing.</li>
++                <li>Extended the technographics platform by integrating job portal data sources and enhancing HTML
++                    parsing to improve technology text extraction accuracy.</li>
++                <li><b>Tech</b>: Java, Jakarta Servlets, Postgres, Redis, Ml Classifiers</li>
+             </ul>
+         </div>
+         <div class="work-item">
+             <h4>Netmeds</h4>
+-            <p>Data Scientist, Intern.</p>
+             <span class="flex-space-between">
++                <p>Data Scientist, Intern | Chennai, IN</p>
+                 <p>Jun 2021 - Dec 2021</p>
+-                <p>Chennai, IN</p>
+             </span>
+             <ul>
+                 <li>Built item-user recommendation systems using Graph Neural Networks and collaborative filtering,
+@@ -164,6 +168,7 @@
+                     cleaning, enhancing recommendation accuracy.</li>
+                 <li>Collaborated with data engineers and product teams to validate model outputs and integrate insights
+                     into downstream systems.</li>
++                <li><b>Tech</b>: Python, Tensorflow, Neural Networks</li>
+ 
+             </ul>
+         </div>
+@@ -186,6 +191,7 @@
+                 <li>Optimized scheduling throughput
+                     with composite indexes on job state and scheduled timestamp columns, reducing scan cost on
+                     high-volume job queues.</li>
++                <li><b>Tech</b>: Java, Spring Boot, Redis, Postgres</li>
+             </ul>
+         </div>
+         <div class="project-item">
+@@ -199,7 +205,7 @@
+                     attendance marking per session.</li>
+                 <li>Integrated Google OAuth 2.0 for secure authentication and role-based access control for students and
+                     instructors.</li>
+-
++                <li><b>Tech</b>: MERN Stack, Socket.io</li>
+             </ul>
+         </div>
+     </section>
+@@ -212,14 +218,6 @@
+             <p>2019 - 2023, Madurai, IN</p>
+         </span>
+     </section>
+-
+-    <section id="skills">
+-        <h3>Skills</h3>
+-        <p><b>Languages:</b> Java, Python, JavaScript, SQL</p>
+-        <p><b>Backend:</b> Spring Boot, Node.js, REST APIs (sync & async), distributed systems</p>
+-        <p><b>Databases:</b> PostgreSQL (query optimisation, indexing), MongoDB, Redis</p>
+-        <p><b>Tools:</b> Git, Linux, Socket.io, WebSockets</p>
+-    </section>
+ </body>
+ 
+ </html>
+\ No newline at end of file
