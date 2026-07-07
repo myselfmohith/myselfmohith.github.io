@@ -88,39 +88,44 @@
         }
 
         @media print {
-            @media print {
-                body {
-                    background: #fff;
-                    font-family: Georgia;
-                    font-size: 11px;
-                    padding: 0;
-                }
+            :root {
+                --text-shade1: #222;
+                --text-shade2: #444;
+                --bottom-border: #b9b9b9;
+                font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
 
-                h1 {
-                    font-size: 24px;
-                    margin: 10px;
-                }
+            body {
+                background: #fff;
+                font-family: Georgia;
+                font-size: 11px;
+                padding: 0;
+            }
 
-                h3 {
-                    font-size: 13px;
-                }
+            h1 {
+                font-size: 24px;
+                margin: 10px;
+            }
 
-                h4,
-                li {
-                    font-size: 11px;
-                }
+            h3 {
+                font-size: 13px;
+            }
 
-                .flex-space-between {
-                    font-size: 10px;
-                }
+            h4,
+            li {
+                font-size: 11px;
+            }
 
-                section#info {
-                    margin-top: 0;
-                }
+            .flex-space-between {
+                font-size: 10px;
+            }
 
-                section#education {
-                    margin-bottom: 0;
-                }
+            section#info {
+                margin-top: 0;
+            }
+
+            section#education {
+                margin-bottom: 0;
             }
         }
     </style>
