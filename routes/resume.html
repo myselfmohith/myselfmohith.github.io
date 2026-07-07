@@ -87,6 +87,11 @@
             gap: 1px;
         }
 
+        i{
+            font-weight: bold;
+            font-style: normal;
+        }
+
         @media print {
             :root {
                 --text-shade1: #222;
@@ -104,7 +109,7 @@
 
             h1 {
                 font-size: 24px;
-                margin: 10px;
+                margin: 10px 0 0;
             }
 
             h3 {
@@ -169,15 +174,15 @@
                 <p>Jun 2023 - Present </p>
             </span>
             <ul>
-                <li>Contributed to a distributed crawling infrastructure processing ~200M domains, providing
+                <li>Contributed to a distributed crawling infrastructure processing <i>~200M domains</i>, providing
                     fault-tolerant, at-least-once execution for large-scale web data extraction.</li>
                 <li>Designed stateless synchronous and asynchronous Java APIs for distributed ingestion pipelines,
                     enabling independent horizontal scaling.</li>
-                <li>Built a reusable Redis-backed distributed rate-limiting framework for 10 external service
+                <li>Built a reusable Redis-backed distributed rate-limiting framework for external service
                     integrations, enforcing global request quotas across multiple application instances.</li>
-                <li>Reduced parked-domain false positives from 36% to 8% by integrating an ML-based classifier into
+                <li>Reduced parked-domain false positives from <i>36% to 8%</i> by integrating an ML-based classifier into
                     production services, improving downstream data quality.</li>
-                <li>Improved PostgreSQL query performance by ~30% through execution-plan analysis (EXPLAIN ANALYZE) and
+                <li>Improved PostgreSQL <i>query performance by ~30%</i> through execution-plan analysis (EXPLAIN ANALYZE) and
                     targeted composite indexing.</li>
                 <li>Extended the technographics platform by integrating job portal data sources and enhancing HTML
                     parsing to improve technology text extraction accuracy.</li>
@@ -191,7 +196,7 @@
                 <p>Jun 2021 - Dec 2021</p>
             </span>
             <ul>
-                <li>Built item-user recommendation systems using Graph Neural Networks and collaborative filtering,
+                <li>Built item-user recommendation systems using <i>Graph Neural Networks and collaborative filtering</i>,
                     inspired by Amazon's item-to-item collaborative filtering approach.</li>
                 <li>Improved product categorization and metadata quality through automated web scraping and data
                     cleaning, enhancing recommendation accuracy.</li>
@@ -209,13 +214,13 @@
             <h4>Distributed Job Orchestrator</h4>
             <ul>
                 <li>Built a distributed task
-                    orchestration system capable of handling ~1,000 QPS peak throughput with at-least-once delivery
+                    orchestration system capable of handling <i>~1,000 QPS peak throughput</i> with at-least-once delivery
                     semantics.</li>
                 <li>Used PostgreSQL <code>SKIP LOCKED</code>
                     for concurrent worker coordination, enabling safe multi-worker job claiming without row-level
                     contention.</li>
                 <li>Implemented a Redis-based
-                    heartbeat mechanism to track worker liveness and automatically recover stalled or abandoned jobs.
+                    heartbeat mechanism to track worker health checks and <i>automatically recover stalled or abandoned jobs.</i>
                 </li>
                 <li>Optimized scheduling throughput
                     with composite indexes on job state and scheduled timestamp columns, reducing scan cost on
@@ -226,11 +231,11 @@
         <div class="project-item">
             <h4>RollCall Rooms (Real-time Attendance System)</h4>
             <ul>
-                <li> Built a real-time classroom attendance system using the MERN stack, enabling live attendance
-                    tracking for classroom sessions.</li>
+                <li> Built a real-time classroom attendance system using the MERN stack, enabling <i>live attendance
+                    tracking</i> for classroom sessions.</li>
                 <li> Implemented WebSocket-based real-time communication using Socket.io for instant attendance updates
                     across clients.</li>
-                <li>Designed a QR-based check-in mechanism to prevent duplicate entries and ensure single-time
+                <li>Designed a <i>QR-based check-in</i> mechanism to prevent duplicate entries and ensure single-time
                     attendance marking per session.</li>
                 <li>Integrated Google OAuth 2.0 for secure authentication and role-based access control for students and
                     instructors.</li>
