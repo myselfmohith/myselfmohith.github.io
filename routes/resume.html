@@ -183,7 +183,20 @@
         <p>Jun 2023 - Present </p>
       </span>
       <ul>
-        <li>Designed stateless synchronous and asynchronous Java APIs for distributed ingestion pipelines across a
+        <li>Designed stateless synchronous and asynchronous Java APIs for distributed ingestion pipelines on a crawling
+          platform covering ~200M domains, enabling independent horizontal scaling of individual services.</li>
+        <li>Built an asynchronous LLM extraction pipeline using PostgreSQL queue tables and Redis locking to distribute
+          record processing across multiple machines.</li>
+        <li>Implemented a distributed rate limiter using Redis and Lua to enforce configurable per-application LLM
+          quotas across machines (100 requests/min at peak and 1,500 requests/min off-peak).</li>
+        <li>Reduced PostgreSQL query execution time by ~30% through <code>EXPLAIN ANALYZE</code>-driven optimization and
+          composite indexing on high-volume ingestion tables, improving crawling performance.</li>
+        <li>Developed a random forest classifier for parked-domain detection, reducing false positives from 36% to 8%,
+          validated through manual review of ~5k live flagged pages.</li>
+        <li>Optimized technology detection using Aho-Corasick multi-pattern matching and extended coverage with
+          DNS-based (MX, TXT) detection for technologies not exposed in page HTML.</li>
+        <li>B
+          <!-- <li>Designed stateless synchronous and asynchronous Java APIs for distributed ingestion pipelines across a
           crawling platform covering ~200M domains, allowing individual services to scale horizontally and
           independently.</li>
 
@@ -216,7 +229,7 @@
         <li><strong>Measurement gaps:</strong> The API design, LLM pipeline, rate limiter, Aho-Corasick optimization,
           DNS/job portal integrations, and MCP server bullets lack quantified outcomes. Consider measuring independent
           service scaling, extraction throughput, rate-limit compliance, page-processing latency, additional technology
-          detections, and MCP client adoption, respectively.</li>
+          detections, and MCP client adoption, respectively.</li> -->
         <li class="tech"><strong>Tech:</strong> Java, Python, Jakarta Servlets, PostgreSQL, Redis</li>
       </ul>
     </div>
